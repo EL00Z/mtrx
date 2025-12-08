@@ -1115,6 +1115,7 @@
             margin: 0 auto;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid var(--matrix-green-dim);
+            cursor: none; /* Hide cursor over game */
         }
 
         .game-controls {
@@ -1450,7 +1451,6 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-content">
             <pre class="loader-ascii">
@@ -1470,13 +1470,10 @@
         </div>
     </div>
 
-    <!-- Glitch Overlay -->
     <div class="glitch-overlay" id="glitch-overlay"></div>
 
-    <!-- Matrix Rain Background -->
     <canvas id="matrix-rain"></canvas>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <a href="#hero" onclick="closeMobileMenu()">./home</a>
         <a href="#about" onclick="closeMobileMenu()">./about</a>
@@ -1486,7 +1483,6 @@
         <a href="#contact" onclick="closeMobileMenu()">./connect</a>
     </div>
 
-    <!-- Navigation -->
     <nav id="navbar">
         <a href="#hero" class="logo">ELVIN_A</a>
         <ul class="nav-links">
@@ -1503,7 +1499,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-container">
             <div class="hero-image-container">
@@ -1546,7 +1541,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="section-header">
@@ -1574,8 +1568,8 @@
                         <span class="prompt">$</span> <span class="command">cat achievements.log | head -5</span>
                     </div>
                     <div class="terminal-line output">
-                        [✓] Co-founded metaverse startup → raised <span class="highlight">$3M+</span> → scaled to 30 operators<br>
-                        [✓] Infiltrated enterprise sector → <span class="highlight">World Bank</span> contract secured<br>
+                        [✓] Co-founded crypto startup → raised <span class="highlight">$3M+</span> → scaled to 30 operators<br>
+                        [✓] Infiltrated enterprise sector → <span class="highlight">contracts secured, including World Bank</span><br>
                         [✓] Deployed lead-gen algorithm → 40+ C-level targets/month from <span class="highlight">Visa, MasterCard, HSBC</span><br>
                         [✓] Executed token generation events → listings on <span class="highlight">Gate.io, MEXC</span><br>
                         [✓] Expanded operations → <span class="highlight">MENA, NA, EU</span> territories acquired
@@ -1594,7 +1588,6 @@
         </div>
     </section>
 
-    <!-- Interactive Terminal Section -->
     <section class="interactive-section" id="terminal">
         <div class="interactive-container">
             <div class="section-header" style="text-align: center;">
@@ -1615,7 +1608,7 @@
                         ╔══════════════════════════════════════════════════════════════╗
                     </div>
                     <div class="output-line" style="color: var(--matrix-green);">
-                        ║  WELCOME TO ELVIN'S SYSTEM v2.0.25                           ║
+                        ║  WELCOME TO ELVIN'S SYSTEM v2.0.25/26                        ║
                     </div>
                     <div class="output-line" style="color: var(--matrix-green);">
                         ║  "The Matrix has you..."                                     ║
@@ -1640,7 +1633,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section class="skills-section" id="skills">
         <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
             <div class="section-tag" style="justify-content: center;">ls -la ./capabilities/</div>
@@ -1686,7 +1678,6 @@
         </div>
     </section>
 
-    <!-- Game Section -->
     <section class="game-section" id="game">
         <div class="game-container">
             <div class="section-header">
@@ -1710,17 +1701,16 @@
                     <button class="game-btn" id="pause-btn" onclick="togglePause()" style="display: none;">[ PAUSE ]</button>
                 </div>
                 <div class="game-instructions">
-                    Use <kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> to move | <kbd>SPACE</kbd> to pause
+                    Use <kbd>MOUSE</kbd> to move | <kbd>←</kbd> <kbd>→</kbd> keys also work | <kbd>SPACE</kbd> to pause
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
             <div class="section-tag" style="justify-content: center;">./initiate_connection.sh</div>
-            <h2>READY TO<br><span class="glitch" data-text="JACK IN?">JACK IN?</span></h2>
+            <h2>READY TO<br><span class="glitch" data-text="CONNECT?">CONNECT?</span></h2>
             <p>
                 Building something revolutionary in fintech, web3, or AI?<br>
                 Let's discuss how to bend the rules of the market.
@@ -1734,7 +1724,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-left">
             <p>© 2025 ELVIN_AZIYEV // ALL_SYSTEMS_OPERATIONAL</p>
@@ -1924,8 +1913,9 @@
         const terminalOutput = document.getElementById('terminal-output');
 
         const commands = {
-            help: () => `<span style="color: #00ff41;">AVAILABLE COMMANDS:</span>\n\n  <span style="color:#00ff41">help</span> - Show this menu\n  <span style="color:#00ff41">whoami</span> - About Elvin\n  <span style="color:#00ff41">skills</span> - Technical skills\n  <span style="color:#00ff41">experience</span> - Work history\n  <span style="color:#00ff41">education</span> - Academic background\n  <span style="color:#00ff41">contact</span> - Get in touch\n  <span style="color:#00ff41">linkedin</span> - Open LinkedIn\n  <span style="color:#00ff41">clear</span> - Clear terminal\n  <span style="color:#00ff41">hack</span> - ???\n  <span style="color:#00ff41">matrix</span> - Enter the Matrix\n  <span style="color:#00ff41">neo</span> - Are you the One?\n  <span style="color:#00ff41">sudo</span> - Gain root access\n  <span style="color:#00ff41">coffee</span> - Essential fuel\n  <span style="color:#00ff41">bitcoin</span> - Check BTC status\n  <span style="color:#00ff41">hire</span> - Why hire Elvin?\n  <span style="color:#00ff41">secret</span> - ???\n  <span style="color:#00ff41">game</span> - Play the game\n  <span style="color:#00ff41">joke</span> - Dev humor\n  <span style="color:#00ff41">fortune</span> - Your fortune`,
+            help: () => `<span style="color: #00ff41;">AVAILABLE COMMANDS:</span>\n\n  <span style="color:#00ff41">about</span>\n  <span style="color:#00ff41">skills</span>\n  <span style="color:#00ff41">experience</span>\n  <span style="color:#00ff41">education</span>\n  <span style="color:#00ff41">contact</span>\n  <span style="color:#00ff41">linkedin</span>\n  <span style="color:#00ff41">clear</span>\n  <span style="color:#00ff41">game</span>\n  <span style="color:#00ff41">matrix</span>`,
             whoami: () => `<span style="color: #00ff41;">USER PROFILE: ELVIN_AZIYEV</span>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n<span style="color: #008f11;">DESIGNATION:</span> Business Development & Strategy Executive\n<span style="color: #008f11;">EXPERIENCE:</span> 8+ years in fintech, web3, and emerging tech\n<span style="color: #008f11;">CURRENT_OP:</span> New Business Development Manager @ IdeaSoft\n<span style="color: #008f11;">LOCATION:</span> Turkey (operating globally)\n<span style="color: #008f11;">LANGUAGES:</span> English, Russian, Azerbaijani, Turkish\n\n<span style="color: #008f11;">STATUS:</span> <span style="color: #00ff41;">ONLINE</span> and ready to build.`,
+            about: () => commands.whoami(), // Alias for whoami
             skills: () => `<span style="color: #00ff41;">SKILL_MATRIX LOADED:</span>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n<span style="color: #008f11;">BUSINESS:</span>\n  [████████████████████] B2B Sales & Partnerships\n  [████████████████████] Business Development\n  [███████████████████░] Fundraising & IR\n  [████████████████████] Team Management\n\n<span style="color: #008f11;">TECHNICAL:</span>\n  [████████████████████] Web3 & Tokenomics\n  [███████████████████░] Layer 2 Blockchains\n  [██████████████████░░] Growth Hacking`,
             experience: () => `<span style="color: #00ff41;">CAREER_TIMELINE:</span>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n<span style="color: #00ff41;">[2025-NOW]</span> New Business Development Manager @ IdeaSoft\n           → World Bank contract secured\n\n<span style="color: #00ff41;">[2024]</span> Head of BD & Growth @ Lightning Rod Labs\n           → 10+ clients closed\n\n<span style="color: #00ff41;">[2021-22]</span> CEO & Co-founder @ Metafluence\n           → $3M+ raised, scaled to 30 people`,
             education: () => `<span style="color: #00ff41;">EDUCATION_LOG:</span>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n<span style="color: #008f11;">[2016-2019]</span> Master's in Economics - University of Bologna\n<span style="color: #008f11;">[2018]</span> MBA Exchange - University of Tampere, Finland\n<span style="color: #008f11;">[2011-2015]</span> Bachelor's in Economics - Baku State University\n\n<span style="color: #ffff00;">CERTIFICATIONS:</span> Matrix Red Pill (2021)`,
@@ -1995,6 +1985,30 @@
             if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keys.right = false;
         });
 
+        // Mouse/Touch control handler
+        function handleInputMove(clientX) {
+            if (!gameRunning || gamePaused) return;
+            const rect = gameCanvas.getBoundingClientRect();
+            const scaleX = gameCanvas.width / rect.width;
+            const mouseX = (clientX - rect.left) * scaleX;
+            
+            // Move player to mouse position (centered)
+            player.x = mouseX - (player.width / 2);
+            
+            // Boundary checks
+            if (player.x < 0) player.x = 0;
+            if (player.x > gameCanvas.width - player.width) player.x = gameCanvas.width - player.width;
+        }
+
+        gameCanvas.addEventListener('mousemove', (e) => {
+            handleInputMove(e.clientX);
+        });
+
+        gameCanvas.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent scrolling
+            handleInputMove(e.touches[0].clientX);
+        }, { passive: false });
+
         function startGame() {
             score = 0; lives = 3; difficulty = 1; items = []; particles = []; player.x = 380;
             gameRunning = true; gamePaused = false;
@@ -2037,6 +2051,7 @@
             if (!gameRunning) return;
             if (gamePaused) { drawGame(); gameLoop = requestAnimationFrame(updateGame); return; }
 
+            // Keyboard input fallback (mouse overrides this if moving)
             if (keys.left && player.x > 0) player.x -= player.speed;
             if (keys.right && player.x < gameCanvas.width - player.width) player.x += player.speed;
 
@@ -2191,10 +2206,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
