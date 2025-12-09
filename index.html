@@ -1345,57 +1345,367 @@
             }
         }
 
+       /* ==================== ENHANCED FOR MOBILE ==================== */
         @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
+            /* Loader fixes */
+            .loader-ascii {
+                font-size: 0.25rem;
+                transform: scale(0.8);
             }
-
-            .nav-links {
+            
+            .loader-bar {
+                width: 280px;
+                max-width: 90vw;
+            }
+            
+            .loader-text {
+                font-size: 1rem;
+            }
+            
+            /* Hero section fixes */
+            .hero-container {
+                gap: 2rem;
+            }
+            
+            .hero-image {
+                width: 220px;
+                height: 280px;
+            }
+            
+            .image-frame {
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+            }
+            
+            .image-data {
+                font-size: 0.55rem;
+                bottom: -40px;
+                padding: 0 1rem;
+            }
+            
+            .hero-content {
+                padding: 0 0.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            
+            .hero-stats {
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+            
+            .stat-value {
+                font-size: 1.6rem;
+            }
+            
+            .stat-label {
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+            }
+            
+            /* Terminal fixes */
+            .terminal-body {
+                padding: 1.25rem;
+                font-size: 0.85rem;
+                min-height: auto;
+            }
+            
+            .terminal-title {
+                font-size: 0.7rem;
+            }
+            
+            .interactive-terminal::before {
                 display: none;
             }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .hero {
-                padding: 5rem 1.5rem 2rem;
-            }
-
-            .hero-stats {
-                flex-wrap: wrap;
-                gap: 1.5rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
+            
             .terminal-output {
-                height: 300px;
+                height: 280px;
+                padding: 1rem;
+            }
+            
+            .ascii-art {
+                font-size: 0.35rem;
+                overflow-x: auto;
+            }
+            
+            .command-list {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            /* Skills cards */
+            .skill-card {
+                padding: 1.5rem;
+            }
+            
+            .skill-number {
+                font-size: 2.5rem;
+            }
+            
+            .skill-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Game section */
+            .game-section {
+                padding: 4rem 1rem;
+            }
+            
+            .game-wrapper {
+                padding: 0.5rem;
+            }
+            
+            .game-header {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem;
+            }
+            
+            .game-stats {
+                gap: 1rem;
                 font-size: 0.85rem;
             }
-
-            #game-canvas {
-                max-width: 100%;
-                height: auto;
+            
+            .game-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
             }
-
-            footer {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+            
+            .game-instructions {
+                font-size: 0.8rem;
+                padding: 0 0.5rem;
             }
-
-            .footer-left {
-                align-items: center;
+            
+            /* Contact section */
+            .contact {
+                padding: 5rem 1.5rem;
+            }
+            
+            .contact p {
+                font-size: 1rem;
+            }
+            
+            .matrix-btn {
+                padding: 1rem 1.75rem;
+                font-size: 1.1rem;
+            }
+            
+            /* Footer */
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.5rem;
             }
         }
 
+        /* ==================== EXTRA SMALL SCREENS (480px and below) ==================== */
+        @media (max-width: 480px) {
+            /* Navigation */
+            nav {
+                padding: 0.75rem 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            /* Loader */
+            .loader-ascii {
+                font-size: 0.18rem;
+                transform: scale(0.65);
+            }
+            
+            .loader-bar {
+                width: 220px;
+            }
+            
+            .loader-text {
+                font-size: 0.85rem;
+            }
+            
+            .loader-subtext {
+                font-size: 0.75rem;
+            }
+            
+            /* Hero */
+            .hero {
+                padding: 4.5rem 1rem 2rem;
+            }
+            
+            .hero-image {
+                width: 180px;
+                height: 230px;
+            }
+            
+            .image-data {
+                font-size: 0.45rem;
+            }
+            
+            .terminal-header {
+                font-size: 0.85rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.25rem;
+            }
+            
+            .stat {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 1rem;
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
+            }
+            
+            /* Sections */
+            section {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .section-tag {
+                font-size: 0.85rem;
+            }
+            
+            /* Terminal */
+            .terminal-body {
+                padding: 1rem;
+                font-size: 0.8rem;
+                line-height: 1.7;
+            }
+            
+            .output {
+                padding-left: 0.75rem;
+                margin-left: 0.25rem;
+            }
+            
+            .terminal-output {
+                height: 250px;
+                font-size: 0.8rem;
+            }
+            
+            .terminal-input-line {
+                padding: 0.75rem 1rem;
+            }
+            
+            .terminal-prompt {
+                font-size: 0.85rem;
+            }
+            
+            .terminal-input {
+                font-size: 0.85rem;
+            }
+            
+            .command-list {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Skills */
+            .skill-card {
+                padding: 1.25rem;
+            }
+            
+            .skill-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .skill-card p {
+                font-size: 0.85rem;
+            }
+            
+            /* Game */
+            .game-section {
+                padding: 3rem 0.75rem;
+            }
+            
+            .game-title {
+                font-size: 1rem;
+            }
+            
+            .game-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .game-controls {
+                padding: 1rem;
+            }
+            
+            .game-btn {
+                padding: 0.5rem 1.25rem;
+                font-size: 0.9rem;
+                margin: 0.25rem;
+            }
+            
+            .game-instructions {
+                font-size: 0.75rem;
+            }
+            
+            /* Contact */
+            .contact {
+                padding: 4rem 1rem;
+            }
+            
+            .contact h2 {
+                font-size: 1.8rem;
+            }
+            
+            .contact p {
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+            
+            .matrix-btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .matrix-btn svg {
+                width: 22px;
+                height: 22px;
+            }
+            
+            /* Footer */
+            footer {
+                padding: 2rem 1rem;
+            }
+            
+            .footer-links {
+                gap: 0.75rem 1.25rem;
+                font-size: 0.8rem;
+            }
+            
+            /* Mobile menu */
+            .mobile-menu a {
+                font-size: 1.5rem;
+            }
+        }
+        
         /* ==================== SPECIAL EFFECTS ==================== */
         .text-scramble {
             display: inline-block;
@@ -2206,5 +2516,6 @@
     </script>
 </body>
 </html>
+
 
 
