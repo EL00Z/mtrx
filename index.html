@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Elvin Aziyev | Enter the Matrix</title>
     <meta name="description" content="Business Development & Strategy executive specializing in Fintech, Crypto, and AI.">
     
@@ -35,6 +35,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         body {
@@ -43,12 +44,14 @@
             color: var(--matrix-green);
             line-height: 1.6;
             overflow-x: hidden;
-            cursor: default;
+            width: 100%;
         }
 
-        /* Custom cursor */
-        body, a, button {
-            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect x='9' y='0' width='2' height='20' fill='%2300ff41'/%3E%3Crect x='0' y='9' width='20' height='2' fill='%2300ff41'/%3E%3C/svg%3E") 10 10, crosshair;
+        /* Custom cursor - Only for non-touch devices */
+        @media (pointer: fine) {
+            body, a, button {
+                cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect x='9' y='0' width='2' height='20' fill='%2300ff41'/%3E%3Crect x='0' y='9' width='20' height='2' fill='%2300ff41'/%3E%3C/svg%3E") 10 10, crosshair;
+            }
         }
 
         /* Selection color */
@@ -266,6 +269,7 @@
             width: 100%;
             height: 100vh;
             background: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -332,6 +336,8 @@
 
         .loader-content {
             text-align: center;
+            width: 90%;
+            max-width: 600px;
         }
 
         .loader-ascii {
@@ -344,6 +350,14 @@
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeIn 1s ease forwards;
+            display: inline-block;
+        }
+
+        /* Scale down ASCII for mobile */
+        @media (max-width: 600px) {
+            .loader-ascii {
+                font-size: 0.3rem;
+            }
         }
 
         .loader-text {
@@ -362,7 +376,9 @@
         }
 
         .loader-bar {
-            width: 350px;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
             height: 4px;
             background: var(--matrix-dark);
             border: 1px solid var(--matrix-green-dim);
@@ -413,6 +429,7 @@
             align-items: center;
             gap: 4rem;
             max-width: 1200px;
+            width: 100%;
         }
 
         .hero-image-container {
@@ -425,6 +442,7 @@
             height: 400px;
             position: relative;
             overflow: hidden;
+            max-width: 100%;
         }
 
         .hero-image img {
@@ -717,6 +735,7 @@
             text-shadow: 0 0 15px var(--matrix-green-glow);
             position: relative;
             display: inline-block;
+            word-wrap: break-word;
         }
 
         .section-title::after {
@@ -790,6 +809,9 @@
             font-family: var(--font-mono);
             font-size: 0.85rem;
             color: var(--matrix-green-dim);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .terminal-body {
@@ -798,12 +820,14 @@
             font-size: 1rem;
             line-height: 1.9;
             min-height: 300px;
+            overflow-x: hidden;
         }
 
         .terminal-line {
             margin-bottom: 1rem;
             opacity: 0;
             animation: typeIn 0.5s ease forwards;
+            word-wrap: break-word;
         }
 
         .terminal-line:nth-child(1) { animation-delay: 0.1s; }
@@ -889,6 +913,7 @@
             font-family: var(--font-mono);
             font-size: 0.95rem;
             line-height: 1.8;
+            overflow-x: hidden;
         }
 
         .terminal-output::-webkit-scrollbar {
@@ -902,6 +927,8 @@
         .output-line {
             margin-bottom: 0.5rem;
             animation: outputFade 0.3s ease;
+            word-wrap: break-word;
+            white-space: pre-wrap;
         }
 
         @keyframes outputFade {
@@ -922,6 +949,7 @@
             font-family: var(--font-mono);
             margin-right: 0.75rem;
             font-size: 0.95rem;
+            white-space: nowrap;
         }
 
         .terminal-input {
@@ -933,6 +961,14 @@
             font-size: 0.95rem;
             outline: none;
             caret-color: var(--matrix-green);
+            width: 100%;
+        }
+
+        /* Prevent zoom on mobile inputs */
+        @media screen and (max-width: 768px) {
+            .terminal-input {
+                font-size: 16px;
+            }
         }
 
         .terminal-input::placeholder {
@@ -946,6 +982,7 @@
             font-size: 0.6rem;
             line-height: 1.1;
             margin: 1rem 0;
+            overflow-x: auto;
         }
 
         .command-list {
@@ -971,7 +1008,8 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            /* Changed minmax to 280px to accommodate smaller phones without overflow */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -1072,6 +1110,7 @@
         .game-container {
             max-width: 800px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .game-wrapper {
@@ -1089,6 +1128,8 @@
             padding: 1rem;
             border-bottom: 1px solid var(--matrix-green-dim);
             font-family: var(--font-terminal);
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .game-title {
@@ -1103,6 +1144,7 @@
 
         .game-stat {
             color: var(--matrix-green-dim);
+            font-size: 0.9rem;
         }
 
         .game-stat span {
@@ -1115,12 +1157,22 @@
             margin: 0 auto;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid var(--matrix-green-dim);
-            cursor: none; /* Hide cursor over game */
+            /* Mobile Optimization: Make canvas fluid */
+            width: 100%;
+            height: auto;
+            max-width: 760px;
+            /* Disable touch scrolling on canvas so you can play */
+            touch-action: none; 
+            cursor: none;
         }
 
         .game-controls {
             padding: 1.5rem;
             border-top: 1px solid var(--matrix-green-dim);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .game-btn {
@@ -1132,7 +1184,8 @@
             padding: 0.75rem 2rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 0.5rem;
+            margin: 0;
+            white-space: nowrap;
         }
 
         .game-btn:hover {
@@ -1161,6 +1214,7 @@
             text-align: center;
             padding: 8rem 3rem;
             position: relative;
+            overflow: hidden;
         }
 
         .contact::before {
@@ -1170,7 +1224,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 600px;
+            max-width: 90vw;
             height: 600px;
+            max-height: 90vw;
             background: radial-gradient(ellipse at center, rgba(0, 255, 65, 0.05) 0%, transparent 70%);
             pointer-events: none;
         }
@@ -1194,6 +1250,7 @@
             font-size: 1.15rem;
             margin-bottom: 2.5rem;
             line-height: 1.8;
+            padding: 0 1rem;
         }
 
         .matrix-btn {
@@ -1210,6 +1267,8 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            max-width: 90%;
+            justify-content: center;
         }
 
         .matrix-btn::before {
@@ -1255,6 +1314,8 @@
             font-size: 0.85rem;
             color: var(--matrix-green-dim);
             position: relative;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
         footer::before {
@@ -1295,6 +1356,7 @@
         .footer-links {
             display: flex;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
@@ -1329,11 +1391,14 @@
             .hero-container {
                 flex-direction: column;
                 text-align: center;
+                gap: 2rem;
             }
 
             .hero-image {
+                /* Make image more responsive */
                 width: 280px;
                 height: 350px;
+                max-width: 100%;
             }
 
             .hero-stats {
@@ -1345,367 +1410,129 @@
             }
         }
 
-       /* ==================== ENHANCED FOR MOBILE ==================== */
         @media (max-width: 768px) {
-            /* Loader fixes */
-            .loader-ascii {
-                font-size: 0.25rem;
-                transform: scale(0.8);
+            nav {
+                padding: 1rem 1.5rem;
+                background: rgba(5, 5, 5, 0.9); /* More opaque on mobile */
+                backdrop-filter: blur(10px);
             }
-            
-            .loader-bar {
-                width: 280px;
-                max-width: 90vw;
-            }
-            
-            .loader-text {
-                font-size: 1rem;
-            }
-            
-            /* Hero section fixes */
-            .hero-container {
-                gap: 2rem;
-            }
-            
-            .hero-image {
-                width: 220px;
-                height: 280px;
-            }
-            
-            .image-frame {
-                top: -10px;
-                left: -10px;
-                right: -10px;
-                bottom: -10px;
-            }
-            
-            .image-data {
-                font-size: 0.55rem;
-                bottom: -40px;
-                padding: 0 1rem;
-            }
-            
-            .hero-content {
-                padding: 0 0.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                line-height: 1.7;
-            }
-            
-            .hero-stats {
-                gap: 1rem;
-                padding: 1rem 0;
-            }
-            
-            .stat-value {
-                font-size: 1.6rem;
-            }
-            
-            .stat-label {
-                font-size: 0.75rem;
-                letter-spacing: 1px;
-            }
-            
-            /* Terminal fixes */
-            .terminal-body {
-                padding: 1.25rem;
-                font-size: 0.85rem;
-                min-height: auto;
-            }
-            
-            .terminal-title {
-                font-size: 0.7rem;
-            }
-            
-            .interactive-terminal::before {
+
+            .nav-links {
                 display: none;
             }
-            
-            .terminal-output {
-                height: 280px;
-                padding: 1rem;
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            section {
+                padding: 4rem 1.5rem; /* Reduced padding for mobile */
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem; /* Ensure title fits */
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
             
-            .ascii-art {
-                font-size: 0.35rem;
-                overflow-x: auto;
+            .stat {
+                flex: 1 1 30%; /* Allow wrapping */
+            }
+
+            /* Skills Grid handled by minmax change above, but extra safety */
+            .skills-grid {
+               /* Grid columns adjusted in main class */
             }
             
-            .command-list {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            /* Skills cards */
             .skill-card {
                 padding: 1.5rem;
             }
-            
-            .skill-number {
-                font-size: 2.5rem;
+
+            .terminal-window {
+                margin: 0 -1rem; /* Expand terminal slightly on very narrow screens */
+                border-left: none;
+                border-right: none;
             }
             
-            .skill-card h3 {
-                font-size: 1.2rem;
+            .terminal-body {
+                padding: 1.25rem;
+                min-height: 250px;
             }
-            
-            /* Game section */
-            .game-section {
-                padding: 4rem 1rem;
+
+            .terminal-output {
+                height: 300px;
+                font-size: 0.85rem;
+                padding: 1rem;
             }
-            
-            .game-wrapper {
-                padding: 0.5rem;
+
+            .terminal-input-line {
+                padding: 0.75rem 1rem;
             }
-            
-            .game-header {
-                flex-direction: column;
-                gap: 0.75rem;
-                padding: 0.75rem;
+
+            #game-canvas {
+                max-width: 100%;
+                height: auto;
             }
             
             .game-stats {
                 gap: 1rem;
-                font-size: 0.85rem;
-            }
-            
-            .game-btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 1rem;
-            }
-            
-            .game-instructions {
                 font-size: 0.8rem;
-                padding: 0 0.5rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-left {
+                align-items: center;
             }
             
-            /* Contact section */
-            .contact {
-                padding: 5rem 1.5rem;
-            }
-            
-            .contact p {
-                font-size: 1rem;
-            }
-            
-            .matrix-btn {
-                padding: 1rem 1.75rem;
-                font-size: 1.1rem;
-            }
-            
-            /* Footer */
             .footer-links {
-                flex-wrap: wrap;
                 justify-content: center;
-                gap: 1rem 1.5rem;
+                gap: 1.5rem;
             }
         }
-
-        /* ==================== EXTRA SMALL SCREENS (480px and below) ==================== */
+        
         @media (max-width: 480px) {
-            /* Navigation */
-            nav {
-                padding: 0.75rem 1rem;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            /* Loader */
-            .loader-ascii {
-                font-size: 0.18rem;
-                transform: scale(0.65);
-            }
-            
-            .loader-bar {
-                width: 220px;
-            }
-            
-            .loader-text {
-                font-size: 0.85rem;
-            }
-            
-            .loader-subtext {
-                font-size: 0.75rem;
-            }
-            
-            /* Hero */
-            .hero {
-                padding: 4.5rem 1rem 2rem;
-            }
-            
             .hero-image {
-                width: 180px;
-                height: 230px;
-            }
-            
-            .image-data {
-                font-size: 0.45rem;
-            }
-            
-            .terminal-header {
-                font-size: 0.85rem;
+                width: 240px;
+                height: 300px;
             }
             
             .hero h1 {
                 font-size: 1.8rem;
             }
             
-            .hero-subtitle {
-                font-size: 0.9rem;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.25rem;
-            }
-            
-            .stat {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 1rem;
-            }
-            
-            .stat-value {
-                font-size: 1.5rem;
-            }
-            
-            /* Sections */
-            section {
-                padding: 3rem 1rem;
-            }
-            
             .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .section-tag {
-                font-size: 0.85rem;
-            }
-            
-            /* Terminal */
-            .terminal-body {
-                padding: 1rem;
-                font-size: 0.8rem;
-                line-height: 1.7;
-            }
-            
-            .output {
-                padding-left: 0.75rem;
-                margin-left: 0.25rem;
-            }
-            
-            .terminal-output {
-                height: 250px;
-                font-size: 0.8rem;
-            }
-            
-            .terminal-input-line {
-                padding: 0.75rem 1rem;
-            }
-            
-            .terminal-prompt {
-                font-size: 0.85rem;
-            }
-            
-            .terminal-input {
-                font-size: 0.85rem;
-            }
-            
-            .command-list {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Skills */
-            .skill-card {
-                padding: 1.25rem;
-            }
-            
-            .skill-card h3 {
-                font-size: 1.1rem;
-            }
-            
-            .skill-card p {
-                font-size: 0.85rem;
-            }
-            
-            /* Game */
-            .game-section {
-                padding: 3rem 0.75rem;
-            }
-            
-            .game-title {
-                font-size: 1rem;
-            }
-            
-            .game-stats {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            
-            .game-controls {
-                padding: 1rem;
-            }
-            
-            .game-btn {
-                padding: 0.5rem 1.25rem;
-                font-size: 0.9rem;
-                margin: 0.25rem;
-            }
-            
-            .game-instructions {
-                font-size: 0.75rem;
-            }
-            
-            /* Contact */
-            .contact {
-                padding: 4rem 1rem;
-            }
-            
-            .contact h2 {
                 font-size: 1.8rem;
             }
             
-            .contact p {
-                font-size: 0.9rem;
-                margin-bottom: 2rem;
+            .skills-grid {
+                grid-template-columns: 1fr; /* Stack skills on tiny screens */
+            }
+            
+            .game-btn {
+                width: 100%;
+                padding: 0.75rem;
             }
             
             .matrix-btn {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
                 width: 100%;
-                justify-content: center;
-            }
-            
-            .matrix-btn svg {
-                width: 22px;
-                height: 22px;
-            }
-            
-            /* Footer */
-            footer {
-                padding: 2rem 1rem;
-            }
-            
-            .footer-links {
-                gap: 0.75rem 1.25rem;
-                font-size: 0.8rem;
-            }
-            
-            /* Mobile menu */
-            .mobile-menu a {
-                font-size: 1.5rem;
+                font-size: 1.1rem;
+                padding: 1rem;
             }
         }
-        
+
         /* ==================== SPECIAL EFFECTS ==================== */
         .text-scramble {
             display: inline-block;
@@ -2299,6 +2126,7 @@
         function handleInputMove(clientX) {
             if (!gameRunning || gamePaused) return;
             const rect = gameCanvas.getBoundingClientRect();
+            // Scale logic is crucial for responsiveness
             const scaleX = gameCanvas.width / rect.width;
             const mouseX = (clientX - rect.left) * scaleX;
             
@@ -2516,6 +2344,3 @@
     </script>
 </body>
 </html>
-
-
-
